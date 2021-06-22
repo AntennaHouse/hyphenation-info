@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  Schema for Antenna House hyphenation exceptions dictionary.
+  
+  Copyright 1999-2021 Antenna House, Inc.
+  
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+      http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <define name="hyphenation-info">
+    <element name="hyphenation-info">
+      <ref name="attlist.hyphenation-info"/>
+      <optional>
+        <ref name="hyphen-char"/>
+      </optional>
+      <optional>
+        <ref name="hyphen-min"/>
+      </optional>
+      <ref name="classes"/>
+      <optional>
+        <ref name="exceptions"/>
+      </optional>
+      <ref name="patterns"/>
+    </element>
+  </define>
+  <define name="attlist.hyphenation-info" combine="interleave">
+    <empty/>
+  </define>
+  <define name="hyphen-char">
+    <element name="hyphen-char">
+  <a:documentation>
+Hyphen character to be used in the exception list as shortcut for &lt;hyphen pre-break="-"/>. Defaults to '-'
+  </a:documentation>
+      <ref name="attlist.hyphen-char"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.hyphen-char" combine="interleave">
+    <attribute name="value"/>
+  </define>
+  <define name="hyphen-min">
+    <element name="hyphen-min">
+  <a:documentation>
+Default minimun length in characters of hyphenated word fragments
+before and after the line break. For some languages this is not
+only for aesthetic purposes, wrong hyphens may be generated if this
+is not accounted for.
+  </a:documentation>
+      <ref name="attlist.hyphen-min"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.hyphen-min" combine="interleave">
+    <attribute name="before">
+      <data type="positiveInteger"/>
+    </attribute>
+  </define>
+  <define name="attlist.hyphen-min" combine="interleave">
+    <attribute name="after">
+      <data type="positiveInteger"/>
+    </attribute>
+  </define>
+  <define name="classes">
+    <element name="classes">
+      <a:documentation>
+Character equivalent classes: space separated list of character groups, all
+characters in a group are to be treated equivalent as far as
+the hyphenation algorithm is concerned. The first character in a group
+is the group's equivalent character. Patterns should only contain
+first characters. It also defines word characters, i.e. a word that
+contains characters not present in any of the classes is not hyphenated.
+       </a:documentation>
+      <ref name="attlist.classes"/>
+      <text/>
+    </element>
+  </define>
+  <define name="attlist.classes" combine="interleave">
+    <empty/>
+  </define>
+  <define name="exceptions">
+    <element name="exceptions">
+      <a:documentation>
+Hyphenation exceptions: space separated list of hyphenated words.
+A hyphen is indicated by the hyphen tag, but you can use the
+hyphen-char defined previously as shortcut. This is in cases
+when the algorithm procedure finds wrong hyphens or you want
+to provide your own hyphenation for some words.
+      </a:documentation>
+      <ref name="attlist.exceptions"/>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="hyphen"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.exceptions" combine="interleave">
+    <empty/>
+  </define>
+  <define name="patterns">
+    <element name="patterns">
+  <a:documentation>
+    The hyphenation patterns, space separated. A pattern is made of 'equivalent'
+    characters as described before, between any two word characters a digit
+    in the range 0 to 9 may be specified. The absence of a digit is equivalent
+    to zero. The '.' character is reserved to indicate begining or ending
+    of words.
+  </a:documentation>
+      <ref name="attlist.patterns"/>
+      <text/>
+    </element>
+  </define>
+  <define name="attlist.patterns" combine="interleave">
+    <empty/>
+  </define>
+  <define name="hyphen">
+    <element name="hyphen">
+      <a:documentation>
+A "full hyphen" equivalent to TeX's \discretionary
+with pre-break, post-break and no-break attributes.
+To be used in the exceptions list, the hyphen character is not
+automatically added
+        </a:documentation>
+      <ref name="attlist.hyphen"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.hyphen" combine="interleave">
+    <optional>
+      <attribute name="pre"/>
+    </optional>
+  </define>
+  <define name="attlist.hyphen" combine="interleave">
+    <optional>
+      <attribute name="no"/>
+    </optional>
+  </define>
+  <define name="attlist.hyphen" combine="interleave">
+    <optional>
+      <attribute name="post"/>
+    </optional>
+  </define>
+  <start>
+    <choice>
+      <ref name="hyphenation-info"/>
+    </choice>
+  </start>
+</grammar>
