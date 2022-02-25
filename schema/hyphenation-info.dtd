@@ -1,0 +1,20 @@
+<!DOCTYPE hyphenation-info
+[
+<!ELEMENT hyphenation-info (hyphen-char?, exceptions?, non-eol-words?)>
+
+<!ELEMENT hyphen-char EMPTY>
+<!ATTLIST hyphen-char value CDATA #REQUIRED>
+
+<!ELEMENT hyphen-min EMPTY>
+<!ATTLIST hyphen-char before NMTOKEN #IMPLIED
+          hyphen-char after  NMTOKEN #IMPLIED>
+
+<!ELEMENT exceptions (#PCDATA|hyphen)*>
+
+<!ELEMENT hyphen EMPTY>
+<!ATTLIST hyphen pre  CDATA #IMPLIED>
+<!ATTLIST hyphen no   CDATA #IMPLIED>
+<!ATTLIST hyphen post CDATA #IMPLIED>
+
+<!ELEMENT non-eol-words #PCDATA>
+]>

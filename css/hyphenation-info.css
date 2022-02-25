@@ -1,0 +1,81 @@
+hyphen-char {
+    display: block;
+    content: "hyphen-char: "
+             oxy_textfield(
+               edit, "@value",
+               color, "red");
+    background-color: silver;
+    padding: 0.2em 0;
+}
+
+hyphen-min::before {
+    content: "hyphen-min";
+    background-color: silver;
+    padding: 0 0.2em;
+    margin: -0.2em;
+}
+
+hyphen-min {
+    display: block;
+    content: "    Before: "
+             oxy_combobox(
+               edit, "@before",
+               values, "1, 2, 3, 4, 5, 6, 7, 8, 9",
+               color, "red")
+             "    After: "
+             oxy_combobox(
+               edit, "@after",
+               values, "1, 2, 3, 4, 5, 6, 7, 8, 9",
+               color, "red");
+    background-color: lightgrey;
+    padding: 0.2em 0;
+}
+
+hyphen-char,
+exceptions,
+classes,
+patterns {
+    display: block;
+    white-space: pre;
+    border: thin solid black;
+    border-radius: 0.2em;
+    margin: 0.5em 0;
+}
+
+exceptions::before,
+classes::before,
+patterns::before {
+    display: block;
+    content: " Exceptions";
+    background-color: silver;
+}
+
+exceptions::before {
+    content: " Exceptions";
+}
+
+classes::before {
+    content: " Classes";
+}
+
+patterns::before {
+    content: " Patterns";
+}
+
+hyphen {
+    display: inline;
+    content: "hyphen::  pre: "
+             oxy_textfield(
+               edit, "@pre",
+               color, "red")
+             "  post: "
+             oxy_textfield(
+               edit, "@post",
+               color, "red")
+             "  no: "
+             oxy_textfield(
+               edit, "@no",
+               color, "red");
+    background-color: lightblue;
+    padding: 0 0.2em;
+}

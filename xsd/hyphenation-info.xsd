@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="hyphenation-info">
+    <xs:annotation>
+      <xs:documentation>Hyphenation exception dictionary</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice>
+        <xs:group ref="ah-hyphenation-info"/>
+        <xs:group ref="tex-hyphenation-info"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="ah-hyphenation-info">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="hyphen-char"/>
+      <xs:element minOccurs="0" ref="exceptions"/>
+      <xs:element minOccurs="0" ref="non-eol-words"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tex-hyphenation-info">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="hyphen-char"/>
+      <xs:element minOccurs="0" ref="hyphen-min"/>
+      <xs:element minOccurs="0" ref="classes"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="patterns"/>
+        <xs:element ref="exceptions"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="hyphen-char">
+    <xs:annotation>
+      <xs:documentation>Alternative hyphenation character to &lt;hyphen/&gt; in the &lt;exception&gt; element</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="hyphen-char.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="hyphen-char.attlist">
+    <xs:attribute name="value" use="required"/>
+  </xs:attributeGroup>
+  <xs:element name="exceptions">
+    <xs:annotation>
+      <xs:documentation>Collection of hyphened words divided by white space</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="hyphen"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hyphen">
+    <xs:complexType>
+      <xs:attributeGroup ref="hyphen.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="hyphen.attlist">
+    <xs:attribute name="pre">
+      <xs:annotation>
+        <xs:documentation>String inserted before the hyphenation character when a hyphenation break occurs</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="no">
+      <xs:annotation>
+        <xs:documentation>String appearing when a hyphenation break does not occur</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="post">
+      <xs:annotation>
+        <xs:documentation>String inserted after the hyphenation character when a hyphenation break occurs</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="non-eol-words" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>non-end-of-line words dividing by the white space</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="hyphen-min">
+    <xs:complexType>
+      <xs:attributeGroup ref="hyphen-min.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="hyphen-min.attlist">
+    <xs:attribute name="before" type="xs:positiveInteger"/>
+    <xs:attribute name="after" type="xs:positiveInteger"/>
+  </xs:attributeGroup>
+  <xs:element name="classes" type="xs:string"/>
+  <xs:element name="patterns" type="xs:string"/>
+</xs:schema>
