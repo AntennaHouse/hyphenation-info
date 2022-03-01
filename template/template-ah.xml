@@ -1,0 +1,6 @@
+<hyphenation-info>
+  <hyphen-char value="" />
+  <hyphen-min before="" after="" />
+  <exceptions><?oxy-placeholder content="a collection of hyphenated words separated by white space. (Optional)"?></exceptions>
+  <non-eol-words><?oxy-placeholder content="Non-end-of-line words separated by white space. (Optional)"?></non-eol-words>
+</hyphenation-info>
