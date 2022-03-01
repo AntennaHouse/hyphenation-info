@@ -59,16 +59,18 @@ extensions.</description>
 
 <!-- Input and output file properties. -->
 
-<!-- Where to find auxiliary files such as the EBNF. -->
-<property name="etc.dir" value="${hyphenation-info.basedir.converted}/etc" />
 <!-- Where to find RELAX NG Compact Syntax schema files. -->
-<property name="rnc.dir" value="${hyphenation-info.basedir.converted}/schema" />
+<property name="rnc.dir"
+	  value="${hyphenation-info.basedir.converted}/schema" />
 <!-- Where to find RELAX NG XML Syntax schema files. -->
-<property name="rng.dir" value="${hyphenation-info.basedir.converted}/rng" />
+<property name="rng.dir"
+	  value="${hyphenation-info.basedir.converted}/rng" />
 <!-- Where to find DTD files. -->
-<property name="dtd.dir" value="${hyphenation-info.basedir.converted}/dtd" />
+<property name="dtd.dir"
+	  value="${hyphenation-info.basedir.converted}/dtd" />
 <!-- Where to find W3C XML Schema (XSD) files. -->
-<property name="xsd.dir" value="${hyphenation-info.basedir.converted}/xsd" />
+<property name="xsd.dir"
+	  value="${hyphenation-info.basedir.converted}/xsd" />
 <!-- Where to find Schematron files. -->
 <property name="schematron.dir" value="${hyphenation-info.basedir.converted}/schematron" />
 <!-- Where to find XSLT files. -->

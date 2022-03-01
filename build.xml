@@ -109,7 +109,7 @@ AFTER making a release on GitHub:
 <target name="-dtd.uptodate">
   <uptodate property="dtd.uptodate">
     <srcfiles dir= "${rnc.dir}" includes="*.rnc"/>
-    <mapper type="glob" from="*.rnc" to="dtd/*.dtd"/>
+    <mapper type="glob" from="*.rnc" to="${dtd}/*.dtd"/>
   </uptodate>
 </target>
 
@@ -136,107 +136,9 @@ AFTER making a release on GitHub:
   </java>
 </target>
 
-<target name="-schematron.uptodate">
-  <condition property="schematron.uptodate">
-    <and>
-      <uptodate targetfile="${build.dir}/schematron.xsl">
-	<srcfiles dir= "${schematron.dir}" includes="*.sch"/>
-	<srcfiles dir= "${xsl.dir}"
-		  includes="${rex-generated-parser.xsl}, parser-runner.xsl" />
-	<srcfiles dir= "${iso.schematron.dir}"
-		  includes="*.xsl" />
-	<srcfiles file="${etc.dir}/check.sch" />
-      </uptodate>
-      <isfalse value="${force}" />
-    </and>
-  </condition>
-</target>
-
-<target name="schematron.compile"
-	depends="-schematron.uptodate"
-	unless="schematron.uptodate"
-	description="Compiles Schematron into XSLT using Saxon">
-  <!-- expand inclusions -->
-  <xslt basedir="${schematron.dir}"
-	style="${iso.schematron.dir}/iso_dsdl_include.xsl"
-	in="${schematron}"
-	out="${build.dir}/expanded.sch"
-	classpath="${saxon.jar}"
-	force="${force}">
-    <factory name="net.sf.saxon.TransformerFactoryImpl">
-      <attribute
-	  name="http://saxon.sf.net/feature/allow-external-functions"
-	  value="true"/>
-      <attribute
-	  name="http://saxon.sf.net/feature/linenumbering"
-	  value="true"/>
-    </factory>
-  </xslt>
-
-  <!-- expand abstract patterns -->
-  <xslt basedir="${build.dir}"
-	style="${iso.schematron.dir}/iso_abstract_expand.xsl"
-	in="${build.dir}/expanded.sch"
-	out="${build.dir}/unabstract.sch"
-	classpath="${saxon.jar}"
-	force="${force}">
-    <factory name="net.sf.saxon.TransformerFactoryImpl">
-      <attribute
-	  name="http://saxon.sf.net/feature/allow-external-functions"
-	  value="true"/>
-      <attribute
-	  name="http://saxon.sf.net/feature/linenumbering"
-	  value="true"/>
-    </factory>
-  </xslt>
-
-  <!-- compile it -->
-  <xslt basedir="${build.dir}"
-	style="${iso.schematron.dir}/iso_svrl_for_${schematron.binding}.xsl"
-	in="${build.dir}/unabstract.sch"
-	out="${build.dir}/schematron.xsl"
-	classpath="${saxon.jar}"
-	force="${force}">
-    <factory name="net.sf.saxon.TransformerFactoryImpl">
-      <attribute
-	  name="http://saxon.sf.net/feature/allow-external-functions"
-	  value="true"/>
-      <attribute
-	  name="http://saxon.sf.net/feature/linenumbering"
-	  value="true"/>
-    </factory>
-    <param name="attributes" expression="true" />
-  </xslt>
-
-  <!-- compile check schematron -->
-  <xslt basedir="${build.dir}"
-	style="${iso.schematron.dir}/iso_schematron_message_${schematron.binding}.xsl"
-	in="${etc.dir}/check.sch"
-	out="${build.dir}/check-schematron.xsl"
-	classpath="${saxon.jar}"
-	force="${force}">
-    <factory name="net.sf.saxon.TransformerFactoryImpl">
-      <attribute
-	  name="http://saxon.sf.net/feature/allow-external-functions"
-	  value="true"/>
-      <attribute
-	  name="http://saxon.sf.net/feature/linenumbering"
-	  value="true"/>
-    </factory>
-  </xslt>
-</target>
-
 <target name="build"
-	depends="rng, xsd"
+	depends="rng, xsd, dtd"
 	description="Build the generated files." />
-
-<target name="clean"
-	description="Remove the generated files.">
-  <delete>
-    <fileset dir="${rnc.dir}" includes="fo.rnc" />
-    <fileset dir="${schematron.dir}" includes="fo-property.sch" />
-  </delete>
-</target>
 
 <!-- Testing targets -->
 
@@ -348,9 +250,11 @@ AFTER making a release on GitHub:
 		prefix="${ant.project.name}/schema" />
     <zipfileset dir="${rng.dir}" includes="*.rng"
 		prefix="${ant.project.name}/rng" />
+    <zipfileset dir="${dtd.dir}" includes="*.dtd, catalog*.xml"
+		prefix="${ant.project.name}/dtd" />
     <zipfileset dir="schematron" includes="*.sch"
 		prefix="${ant.project.name}/schematron" />
-    <zipfileset dir="template" includes="*.xml, *.fo, *.properties"
+    <zipfileset dir="template" includes="*.xml, *.properties"
 		prefix="${ant.project.name}/template" />
     <zipfileset dir="xsl"
 		includes="*.xsl"
