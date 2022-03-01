@@ -1,65 +1,120 @@
+hyphenation-info::before {
+    display: block;
+    content: "AH Formatter Hyphenation Exception Dictionary";
+    color: #003D19;
+    font-weight: bold;
+}
+
+hyphen-char,
+hyphen-min,
+exceptions,
+classes,
+patterns,
+non-eol-words {
+    display: block;
+    white-space: pre-wrap;
+    border: thin solid var(--border-color);
+    border-radius: 0.2em;
+    margin: 0.5em 1px;
+    padding:2px;
+}
+
+exceptions,
+classes,
+patterns,
+non-eol-words {
+    -oxy-show-placeholder: always;
+}
+
 hyphen-char {
     display: block;
-    content: "hyphen-char: "
+    content: "Hyphenation character: "
              oxy_textfield(
                edit, "@value",
-               color, "red");
+               color, #005566);
     background-color: silver;
-    padding: 0.2em 0;
+    padding: 0.2em;
+    --border-color: #00333D;
+    background-color: #C2F5FF;
 }
 
 hyphen-min::before {
-    content: "hyphen-min";
-    background-color: silver;
-    padding: 0 0.2em;
-    margin: -0.2em;
+    content: "Minimum number of characters::";
 }
 
 hyphen-min {
     display: block;
-    content: "    Before: "
+    content: "    before hyphen: "
              oxy_combobox(
                edit, "@before",
                values, "1, 2, 3, 4, 5, 6, 7, 8, 9",
                color, "red")
-             "    After: "
+             "    after hyphen: "
              oxy_combobox(
                edit, "@after",
                values, "1, 2, 3, 4, 5, 6, 7, 8, 9",
-               color, "red");
-    background-color: lightgrey;
+               color, #000D99);
     padding: 0.2em 0;
+    --border-color: #00053D;
+    background-color: #C2C7FF;
+    -oxy-placeholder-content: "Minimum number of characters in a hyphenated word before or after the hyphenation character. (Optional)";
 }
 
-hyphen-char,
-exceptions,
-classes,
+classes {
+    --border-color: #29003D;
+    -oxy-placeholder-content: "Character groups separated by white space; e.g., 'aA bB'. (Required for TeX)";
+}
+
+exceptions {
+    color: #66003C;
+    --border-color: #66003C;
+    -oxy-placeholder-content: "Hyphenated words separated by white space. May include <hyphen>. (Optional)";
+}
+
+non-eol-words {
+    --border-color: #003D19;
+    -oxy-placeholder-content: "Non-end-of-line words separated by white space. (Optional)";
+    border-style: solid;
+}
+
 patterns {
-    display: block;
-    white-space: pre;
-    border: thin solid black;
-    border-radius: 0.2em;
-    margin: 0.5em 0;
+    --border-color: #3D0024;
+    -oxy-placeholder-content: "Hyphenation patterns separated by white space. (Required for TeX)";
 }
 
 exceptions::before,
 classes::before,
-patterns::before {
+patterns::before,
+non-eol-words:before {
     display: block;
-    content: " Exceptions";
+    color: black;
     background-color: silver;
-}
-
-exceptions::before {
-    content: " Exceptions";
+    padding-bottom: 0.2em;
+    border-bottom: thin solid var(--border-color);
+    border-top-left-radius: 0.2em;
+    border-top-right-radius: 0.2em;
+    margin: -2px -2px 0 -2px;
+    padding: 0 4px;
 }
 
 classes::before {
-    content: " Classes";
+    content: "Classes";
+    background-color: #EBC2FF;
+}
+
+exceptions::before {
+    content: "Exceptions";
+    background-color: #FFC2E6;
 }
 
 patterns::before {
-    content: " Patterns";
+    content: "Patterns";
+    background-color: #FFCCC2;
+}
+
+non-eol-words::before {
+    content: "Non-end-of-line words";
+    background-color: #FFFAC2;
 }
 
 hyphen {
