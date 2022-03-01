@@ -3,26 +3,13 @@ datatypes xsd = "http://www.w3.org/2001/XMLSchema-datatypes"
 start = hyphenation-info
 
 hyphenation-info =
-  ## Hyphenation exception dictionary
+  ## AH Formatter hyphenation exception dictionary
   element hyphenation-info {
-     ah-hyphenation-info |
-     tex-hyphenation-info
-  }
-
-ah-hyphenation-info =
-     ah-hyphenation-info.attlist,
      hyphen-char?,
-     exceptions?,
-     non-eol-words?
-
-tex-hyphenation-info =
-  hyphen-char?,
-  hyphen-min?,
-  classes?,
-  ( patterns? & exceptions? )
-
-ah-hyphenation-info.attlist &=
-   empty
+     hyphen-min?,
+     ((exceptions?, non-eol-words?) |    # AH Formatter format
+      (classes, exceptions?, patterns))  # TeX format
+  }
 
 hyphen-char =
    ## Alternative hyphenation character to <hyphen/> in the <exception> element
@@ -51,36 +38,26 @@ hyphen =
       empty
 }
 
-hyphen.attlist &=
+hyphen.attlist =
    ## String inserted before the hyphenation character when a hyphenation break occurs
-   attribute pre { text }?
-
-hyphen.attlist &=
+   attribute pre { text }?,
+   ## String inserted after the hyphenation character when a hyphenation break occurs
+   attribute post { text }?,
    ## String appearing when a hyphenation break does not occur
    attribute no { text }?
-
-hyphen.attlist &=
-   ## String inserted after the hyphenation character when a hyphenation break occurs
-   attribute post { text }?
 
 non-eol-words =
    ## Non-end-of-line words separated by white space
    element non-eol-words {
-      non-eol-words.attlist,
       text
 }
-
-non-eol-words.attlist &= empty
 
 hyphen-min =
   ## Minimum number of characters in a hyphenated word before or after the hyphenation character
   element hyphen-min {
     hyphen-min.attlist,
-    hyphen-min.model
+    empty
   }
-
-hyphen-min.model =
-  empty
 
 hyphen-min.attlist =
   ## Minimum number of characters in a hyphenated word before the hyphenation character
