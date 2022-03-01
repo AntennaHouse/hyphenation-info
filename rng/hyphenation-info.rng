@@ -5,69 +5,35 @@
   </start>
   <define name="hyphenation-info">
     <element name="hyphenation-info">
-      <a:documentation>Hyphenation exception dictionary</a:documentation>
-      <optional>
-        <!--
-              ah-hyphenation-info |
-              tex-hyphenation-info
-        -->
-        <ref name="hyphen-char"/>
-      </optional>
-      <optional>
-        <ref name="hyphen-min"/>
-      </optional>
-      <choice>
-        <group>
-          <optional>
-            <ref name="exceptions"/>
-          </optional>
-          <optional>
-            <ref name="non-eol-words"/>
-          </optional>
-        </group>
-        <group>
-          <ref name="classes"/>
-          <optional>
-            <ref name="exceptions"/>
-          </optional>
-          <ref name="patterns"/>
-        </group>
-      </choice>
+      <a:documentation>AH Formatter hyphenation exception dictionary</a:documentation>
+      <group>
+        <optional>
+          <ref name="hyphen-char"/>
+        </optional>
+        <optional>
+          <ref name="hyphen-min"/>
+        </optional>
+        <choice>
+          <group>
+            <optional>
+              <ref name="exceptions"/>
+            </optional>
+            <optional>
+              <ref name="non-eol-words"/>
+            </optional>
+          </group>
+          <!-- AH Formatter format -->
+          <group>
+            <ref name="classes"/>
+            <optional>
+              <ref name="exceptions"/>
+            </optional>
+            <ref name="patterns"/>
+          </group>
+        </choice>
+      </group>
+      <!-- TeX format -->
     </element>
-  </define>
-  <define name="ah-hyphenation-info">
-    <ref name="ah-hyphenation-info.attlist"/>
-    <optional>
-      <ref name="hyphen-char"/>
-    </optional>
-    <optional>
-      <ref name="exceptions"/>
-    </optional>
-    <optional>
-      <ref name="non-eol-words"/>
-    </optional>
-  </define>
-  <define name="tex-hyphenation-info">
-    <optional>
-      <ref name="hyphen-char"/>
-    </optional>
-    <optional>
-      <ref name="hyphen-min"/>
-    </optional>
-    <optional>
-      <ref name="classes"/>
-    </optional>
-    <interleave>
-      <optional>
-        <ref name="patterns"/>
-      </optional>
-      <optional>
-        <ref name="exceptions"/>
-      </optional>
-    </interleave>
-  </define>
-  <define name="ah-hyphenation-info.attlist" combine="interleave">
-    <empty/>
   </define>
   <define name="hyphen-char">
     <element name="hyphen-char">
@@ -101,46 +67,35 @@
       <empty/>
     </element>
   </define>
-  <define name="hyphen.attlist" combine="interleave">
+  <define name="hyphen.attlist">
     <optional>
       <attribute name="pre">
         <a:documentation>String inserted before the hyphenation character when a hyphenation break occurs</a:documentation>
       </attribute>
     </optional>
-  </define>
-  <define name="hyphen.attlist" combine="interleave">
+    <optional>
+      <attribute name="post">
+        <a:documentation>String inserted after the hyphenation character when a hyphenation break occurs</a:documentation>
+      </attribute>
+    </optional>
     <optional>
       <attribute name="no">
         <a:documentation>String appearing when a hyphenation break does not occur</a:documentation>
       </attribute>
     </optional>
   </define>
-  <define name="hyphen.attlist" combine="interleave">
-    <optional>
-      <attribute name="post">
-        <a:documentation>String inserted after the hyphenation character when a hyphenation break occurs</a:documentation>
-      </attribute>
-    </optional>
-  </define>
   <define name="non-eol-words">
     <element name="non-eol-words">
       <a:documentation>Non-end-of-line words separated by white space</a:documentation>
-      <ref name="non-eol-words.attlist"/>
       <text/>
     </element>
-  </define>
-  <define name="non-eol-words.attlist" combine="interleave">
-    <empty/>
   </define>
   <define name="hyphen-min">
     <element name="hyphen-min">
       <a:documentation>Minimum number of characters in a hyphenated word before or after the hyphenation character</a:documentation>
       <ref name="hyphen-min.attlist"/>
-      <ref name="hyphen-min.model"/>
+      <empty/>
     </element>
-  </define>
-  <define name="hyphen-min.model">
-    <empty/>
   </define>
   <define name="hyphen-min.attlist">
     <optional>

@@ -1,0 +1,31 @@
+<?xml encoding="UTF-8"?>
+
+<!ELEMENT hyphenation-info (hyphen-char?,hyphen-min?,
+                            ((exceptions?,non-eol-words?)
+                             |(classes,exceptions?,patterns)))>
+
+<!ELEMENT hyphen-char EMPTY>
+
+<!ATTLIST hyphen-char
+  value CDATA #REQUIRED>
+
+<!ELEMENT exceptions (#PCDATA|hyphen)*>
+
+<!ELEMENT hyphen EMPTY>
+
+<!ATTLIST hyphen
+  pre CDATA #IMPLIED
+  post CDATA #IMPLIED
+  no CDATA #IMPLIED>
+
+<!ELEMENT non-eol-words (#PCDATA)>
+
+<!ELEMENT hyphen-min EMPTY>
+
+<!ATTLIST hyphen-min
+  before CDATA #IMPLIED
+  after CDATA #IMPLIED>
+
+<!ELEMENT classes (#PCDATA)>
+
+<!ELEMENT patterns (#PCDATA)>
