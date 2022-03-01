@@ -20,7 +20,7 @@
 								<Integer>4</Integer>
 							</field>
 							<field name="uri">
-								<String>${framework}/hyphenation.rng</String>
+								<String>${framework}/rng/hyphenation-info.rng</String>
 							</field>
 						</docTypeSchema>
 					</field>
@@ -33,7 +33,19 @@
 					<field name="authorExtensionDescriptor">
 						<authorExtension>
 							<field name="cssDescriptors">
-								<cssFile-array/>
+								<cssFile-array>
+									<cssFile>
+										<field name="href">
+											<String>${framework}/css/hyphenation-info.css</String>
+										</field>
+										<field name="title">
+											<String></String>
+										</field>
+										<field name="alternate">
+											<Boolean>false</Boolean>
+										</field>
+									</cssFile>
+								</cssFile-array>
 							</field>
 							<field name="mergeCSSsFromDocument">
 								<Boolean>false</Boolean>
@@ -144,10 +156,14 @@
 						</authorExtension>
 					</field>
 					<field name="templatesLocations">
-						<String-array/>
+						<String-array>
+							<String>${frameworkDir}/template</String>
+						</String-array>
 					</field>
 					<field name="xmlCatalogs">
-						<String-array/>
+						<String-array>
+							<String>${framework}/dtd/catalog.xml</String>
+						</String-array>
 					</field>
 					<field name="description">
 						<String></String>
@@ -220,6 +236,9 @@
 											<field name="validationSchema">
 												<null/>
 											</field>
+											<field name="validationAdvancedSettings">
+												<null/>
+											</field>
 										</validationUnit>
 										<validationUnit>
 											<field name="validationType">
@@ -260,9 +279,12 @@
 														<Integer>4</Integer>
 													</field>
 													<field name="uri">
-														<String>${framework}/hyphenation.rng</String>
+														<String>${framework}/rng/hyphenation-info.rng</String>
 													</field>
 												</validationUnitSchema>
+											</field>
+											<field name="validationAdvancedSettings">
+												<null/>
 											</field>
 										</validationUnit>
 										<validationUnit>
@@ -298,15 +320,18 @@
 														<null/>
 													</field>
 													<field name="schematronPhase">
-														<null/>
+														<String>#ALL</String>
 													</field>
 													<field name="type">
 														<Integer>7</Integer>
 													</field>
 													<field name="uri">
-														<String>${framework}/hyphenation.sch</String>
+														<String>${framework}/schematron/hyphenation-info.sch</String>
 													</field>
 												</validationUnitSchema>
+											</field>
+											<field name="validationAdvancedSettings">
+												<null/>
 											</field>
 										</validationUnit>
 									</list>
