@@ -16,7 +16,6 @@ Pull requests and new issues are welcome.
 ## Installing
 
 * If you want to keep up-to-date with **hyphenation-info** releases, then you can install **hyphenation-info** as an add-on Oxygen framework.
-* If you want to use the current **hyphenation-info** version with an older Oxygen version, then you can install **hyphenation-info** as an add-on Oxygen framework.
 * Alternatively, you can download a static copy of the Oxygen framework from GitHub.
 * If you want to easily keep up-to-date with changes, then you can clone this repository and 'pull' the latest version whenever you want.
 * If you want to hack on **hyphenation-info** or submit pull requests, then you can fork this repository and clone that onto your local machine.
