@@ -7,6 +7,8 @@ The Relax NG handles structural validation and the
 Schematron handles the additional constraints that cannot be
 expressed in Relax NG.
 
+**hyphenation-info** version numbers correspond to the AH Formatter version current at the time of the release.
+
 ## Disclaimer
 
 **hyphenation-info** is a work in progress.
