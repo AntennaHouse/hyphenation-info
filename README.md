@@ -1,4 +1,8 @@
-# hyphenation-info
+* [English](#en)
+* [日本語](#ja)
+
+----
+# <a name="en"></a>hyphenation-info
 
 
 Relax NG schema, Schematron, and Oxygen framework for AH Formatter hyphenation exception dictionary files.
@@ -62,7 +66,88 @@ When you open a hyphenation exception dictionary document – where the document
 
 **hyphenation-info** includes a CSS stylesheet for styling the files when viewed in Oxygen's Author mode.
 
-## License/ライセンス
+## License
+
+Copyright 1999-2022 Antenna House, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+----
+
+# <a name="ja"></a>hyphenation-info
+
+
+Relax NG schema、 Schematron、 Oxygen フレームワークの AH Formatter ハイフネーション例外辞書ファイル。
+
+Relax NG は、構造の有効を扱い、Schematron のは Relax NG では表現できない追加の制約を扱います。
+
+**hyphenation-info** 版の番号は、リリース時の AH Formatter 版に対応しています。
+
+## 免責事項
+
+**hyphenation-info** の開発は進行中です。
+
+Pullリクエストや問題がありましたらお知らせください
+
+## インストール
+
+* 最初の **hyphenation-info** リリースを続けたい場合、oXygen のアドオンフレームワークとして **hyphenation-info** をインストールすることができます。
+代わりに、GitHubから oXygen フレームワークの静的なコピーをダウンロードすることができます。
+* 最新の変更を続けたい場合、このリポジトリをクローンして、いつでも好きな時に最新版を pull することができます。
+* **hyphenation-info** をハックしたり pull リクエストをサブミットしたり場合は、このリポジトリをフォークして、ローカルマシンにクローンすることができます。
+###　アドオン oXygen フレームワークとしてのインストール
+
+ https://www.oxygenxml.com/doc/ug-editor/topics/installing-and-updating-add-ons.htmlの oXygen のマニュアルの指示に従ってください。
+
+ **hyphenation-info** の最新サイトの URL は https://raw.githubusercontent.com/AntennaHouse/hyphenation-info/master/add-on.xml
+です。
+
+oXygen はアドオンフレームワークをインストールした後、エデイタの再起動する必要になります。
+
+### oXygen frameworks ディレクトリの ZIP アーカイブにインストールする
+
+1. Releases ページにある最新リリースから ZIP アーカイブをダウンロードして下さい。
+1. oXygen frameworks ディレクトリに ZIP アーカイブにあるフォルダーを解凍します。
+ - Windowsでは、これは `C:\Program Files\Oxygen XML Editor 24.0\frameworks`か同様のものです。
+ - `frameworks` ディレクトリにフォルダをコピーする許可がない場合は、以下に説明するように、別の場所を使用することができます。
+1. oXygen を再起動します。
+
+### 代替 フレームワークスの場所に ZIP アーカイブのインストール
+
+インストールを変更する許可がない場合は、例えば、oXygen は　 C:\Program Files\ で Windows にインストール場合、あなたは管理者でない場合、代替フレームワークの場所も使用するように oXygen を設定することができます。 
+
+1.ファイルをダウンロードするには、このプロジェクトのメインページの "Download ZIP" をクリックします。
+
+1. 新しいフォルダを作成することができるフォルダに ZIP アーカイブ内のフォルダを解凍します。
+1. oXygen の環境設定で、代替フレームワークスの場所として解凍した **hyphenation-info** フォルダを追加します。
+ -  https://www.oxygenxml.com/doc/ug-editor/topics/framework-location.html
+ を参照して下さい。
+1. oXygen を再起動します。
+
+### リポジトリクローンをインストールする
+
+1. oXygen の `frameworks` ディレクトリ又は別のディレクトリのどちらかにリポジトリをクローンします。
+2. 必要ならば、別のフレームワークスの場所として **hyphenation-info** フォルダを追加します。
+3. oXygen を再起動します。
+
+##  **hyphenation-info**の使用
+
+### oXygen XML エディタ
+文書要素が名前空間なしで`hyphenation-info`であるハイフネーション例外辞書文書を開くと、oXygen は自動的にその文書をRelax NG スキーマと Schematron 文法の両方に対して文書を確認します。
+
+**hyphenation-info** には、oXygenの作成者（Author）モードでファイルを表示する際にスタイルを設定するためのCSSスタイルシートが含まれています。
+
+## ライセンス
 
 
 Copyright 1999-2022 Antenna House, Inc.
