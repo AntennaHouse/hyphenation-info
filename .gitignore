@@ -2,5 +2,8 @@ releases
 out
 *local.properties
 *.zip
+# Emacs backup files
 *~
+# Emacs modified files
+\#*#
 *_Conflict.*
