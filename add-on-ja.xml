@@ -2,7 +2,7 @@
 <xt:extensions xmlns:xt="http://www.oxygenxml.com/ns/extension"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.oxygenxml.com/ns/extension http://www.oxygenxml.com/ns/extension/extensions.xsd">
-    <xt:extension id="focheck">
+    <xt:extension id="hyphenation-info-ja">
         <xt:location href="https://github.com/AntennaHouse/hyphenation-info/releases/download/v0.0.1/hyphenation-info-framework-ja-0.0.1.zip"/>
         <xt:version>0.0.1</xt:version>
         <xt:oxy_version>14.0+</xt:oxy_version>
