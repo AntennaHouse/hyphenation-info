@@ -5,13 +5,13 @@
 # <a name="en"></a>hyphenation-info
 
 
-Relax NG schema, Schematron, and Oxygen framework for AH Formatter hyphenation exception dictionary files.
+Relax NG schema, Schematron, and Oxygen framework for Antenna House Formatter hyphenation exception dictionary files (https://www.antenna.co.jp/AHF/help/en/ahf-hyp.html#ExceptionDic).
 
 The Relax NG handles structural validation and the
 Schematron handles the additional constraints that cannot be
 expressed in Relax NG.
 
-**hyphenation-info** version numbers correspond to the AH Formatter version current at the time of the release.
+**hyphenation-info** version numbers correspond to the Antenna House Formatter version current at the time of the release.
 
 ## Disclaimer
 
@@ -87,11 +87,11 @@ limitations under the License.
 # <a name="ja"></a>hyphenation-info
 
 
-Relax NG schema、 Schematron、 Oxygen フレームワークの AH Formatter ハイフネーション例外辞書ファイル。
+Relax NG schema、 Schematron、 Oxygen フレームワークの Antenna House Formatter ハイフネーション例外辞書ファイル（https://www.antenna.co.jp/AHF/help/ja/ahf-hyp.html#ExceptionDic）。
 
 Relax NG は、構造の有効を扱い、Schematron のは Relax NG では表現できない追加の制約を扱います。
 
-**hyphenation-info** 版の番号は、リリース時の AH Formatter 版に対応しています。
+**hyphenation-info** 版の番号は、リリース時の Antenna House Formatter 版に対応しています。
 
 ## 免責事項
 
