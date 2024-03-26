@@ -309,8 +309,7 @@ AFTER making a release on GitHub:
     <zipfileset dir="template" includes="*.xml, *.fo, *.properties"
 		prefix="${ant.project.name}-ja/template" />
     <zipfileset dir="xsl"
-		includes="parser-runner.xsl,
-			  ${rex-generated-parser.xsl}"
+		includes="*.xsl}"
 		prefix="${ant.project.name}-ja/xsl" />
   </zip>
 </target>
